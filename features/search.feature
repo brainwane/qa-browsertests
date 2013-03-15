@@ -11,3 +11,10 @@ Feature: Search
     When I search for: ma
       And I click the Search button
     Then I should land on Search Results page
+
+ Scenario: Find tokens in the captions of uploaded files
+    Given I am on 
+      And http://commons.wikimedia.beta.wmflabs.org/wiki/File:Presentation.pdf exists
+      And http://commons.wikimedia.beta.wmflabs.org/wiki/File:Presentation.pdf has the caption "This is a presentation about snails that User:GreenSpark gave on 6 December 2010 in Athens."
+    When I search for: snails
+    Then Presentation.pdf should be a result
